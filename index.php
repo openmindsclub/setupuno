@@ -1,6 +1,6 @@
 <?php
-include('mail/mail.php');
 include('config.php'); // Here we got include the config file
+include('mail/mail.php');
  ?>
 <!DOCTYPE html>
 <html >

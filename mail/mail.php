@@ -8,7 +8,6 @@ require 'vendor/autoload.php';
 {
   $mail = new PHPMailer(true);
 try {
-include('/global/path/to/config.php');
     //Server settings
     $mail->CharSet = 'UTF-8';
     $mail->SMTPDebug = 0;
