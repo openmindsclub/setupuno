@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
  function sendEmail($email,$name)
 {
+	global $hsmtp, $usmtp, $psmtp, $posmtp, $fsmtp;
   $mail = new PHPMailer(true);
 try {
     //Server settings
@@ -23,8 +24,8 @@ try {
    $mail->setFrom($fsmtp, 'Open Minds Club');
    $mail->addAddress($email);
   // Add attachments
- $mail->AddEmbeddedImage('/home/moubarak/localhost/mail/logo1.png', 'omc.png');
- $mail->AddEmbeddedImage('/home/moubarak/localhost/mail/logo2.png', 'arduino.png');
+ $mail->AddEmbeddedImage('mail/logo1.png', 'omc.png');
+ $mail->AddEmbeddedImage('mail/logo2.png', 'arduino.png');
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
