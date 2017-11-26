@@ -35,6 +35,7 @@ window.onload=function(){
 	});
 }
 </script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
   <h1 class="register-title">ARDUINO Setup</h1>
@@ -127,6 +128,7 @@ class="register-switch-input">
   <br/><br/>
         <input required name="interested" type="text" id="interested" class="register-input" placeholder="Je suis interessé(e) parce que .."><br/><br/>
   <br/><br/>
+	<div class="g-recaptcha" data-sitekey="6LcqeToUAAAAAA82Chdbv0rqv51UDyVfVHEf12Q8"></div>
     <input type="submit" name="submit" value="Inscription" class="register-button" >
   </form>
 
