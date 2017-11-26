@@ -1,0 +1,289 @@
+body, div, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Metropolis;
+    font-weight: 300;
+    letter-spacing: 0.0625em;
+}
+
+a {
+    font-family:Quicksand;
+    text-decoration: none;
+}
+p
+{
+  font-family:Quicksand;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    font-family: Studio Gothic;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+    margin-top: 30px;
+}
+
+nav ul li {
+
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+
+
+nav a {
+  outline-style: none;
+  margin:0;
+  text-decoration: none;
+    position: relative;
+    top: 0;
+    padding: 10px 20px;
+    font-weight: normal;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #EEA904;
+    color: #FFFFFF;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+nav a.active {
+
+  outline-style: none;
+  margin-left: 0;
+    text-decoration: none;
+    top: -4px;
+    background-color: #E95106;
+    color: #FFFFFF;
+    -webkit-box-shadow: 0 4px 0 0 #EEA904;
+    -moz-box-shadow: 0 4px 0 0 #EEA904;
+    box-shadow: 0 4px 0 0 #EEA904;
+}
+
+
+
+
+.slides-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide .centered {
+    width: 60%;
+    margin: 200px auto 0;
+}
+
+.slide .centered h1 {
+    text-align: center;
+}
+
+.slide .centered p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+#slide-1 {
+    background-image: url('1.png');
+    color:#FFFFFF;
+        text-align: center;
+}
+#slide-1 h1
+{
+
+  font-size: 50px;
+}
+
+#slide-2 {
+    background-image:url('2.png');
+        color:#FFFFFF;
+
+}
+
+#slide-3 {
+      background-repeat: no-repeat;
+  background-size: 100%;
+    background-image:url('programme.png?v=6.9');
+        color:#FFFFFF;
+}
+
+#slide-4 {
+    color: #FFFFFF;
+    background-image:url('4.png');
+    text-align: center;
+
+}
+#description
+{
+  align-content: center;
+  text-align: center;
+  padding:20px;
+  border: 2px;
+  border-style: double;
+  border-radius: 5%;
+}
+#description h2
+{
+	font-family: Quicksand;
+}
+#slide-2 .centered
+{
+  margin-top:100px;
+}
+#slide-4 h1
+{
+  display:inline-block;
+  margin-left: 1px;
+  background-color: #FFFFFF;
+  font-family: Studio Gothic;
+  color:#04979C;
+}
+
+.go-prev, .go-next {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+.register-button {
+  display: block;
+  width: 100%;
+  height: 52px;
+  margin-top: 25px;
+  font-size: 19px;
+  font-weight: bold;
+  color: #04979C;
+  text-align: center;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+  background:#FFFFFF;
+  border: 1px solid;
+  border-color: #d8d8d8 #d1d1d1 #c3c3c3;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.centered
+{
+      padding-bottom: 10px;
+}
+.centered img
+{
+
+    border: none;
+    margin: 0 auto;
+
+}
+
+
+/* RESEAUX SOCIAUX */
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20%;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+
+#overlay {
+	position: absolute;
+	background: rgba(0,0,0,0.5);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 50;
+	cursor: pointer;
+}
+.msg {
+	position: absolute;
+	z-index: 60;
+	top: 50%;
+	left: 50%;
+	width: 60%;
+	height: 250px;
+}
+.msg p {
+	font-size: 22px;
+	font-weight: bold;
+}
+.msg_inner {
+	position: relative;
+	top: -30%;
+	left: -50%;
+	border-radius: 10px;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	box-shadow: 0 0 22px rgba(0,0,0,0.5);
+	padding: 29px;
+	box-sizing: border-box;
+	text-align: center;
+	cursor: default;
+}
+.success_inner {
+    border: 1px solid #E95106;
+    background: #E95106;
+}
+.fail_inner {
+	border: 1px solid #893E3E;
+    background: #BB5858;
+}
+.success_inner * {
+	opacity: 1;
+}
