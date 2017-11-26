@@ -66,12 +66,12 @@ Cet atelier aura lieu spécialement pour mettre en avant le rôle que joue l’e
         </div>
     </div>
 </div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.6/TweenLite.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.6/plugins/CSSPlugin.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.6/plugins/ScrollToPlugin.min.js'></script>
 
-    <script  src="js/index.js"></script>
+<script  src="js/index.js"></script>
 
 </body>
 </html>
@@ -81,62 +81,65 @@ Cet atelier aura lieu spécialement pour mettre en avant le rôle que joue l’e
 <!--Script subscribe -->
 
 <?php
-
-$response = $_POST["g-recaptcha-response"];
-$url = 'https://www.google.com/recaptcha/api/siteverify';
-$data = array(
-	'secret' => $api_secret,
-	'response' => $_POST["g-recaptcha-response"]
-);
-$options = array(
-	'http' => array (
-		'method' => 'POST',
-		'content' => http_build_query($data)
-	)
-);
-$context = stream_context_create($options);
-$verify = file_get_contents($url, false, $context);
-$captcha_success=json_decode($verify);
-if ($captcha_success->success==false) {
-	header('Location: http://openmindsclub.net/arduino/registration');
-} else if ($captcha_success->success==true) {
-
-	$email = $_POST['email'];
-	if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-		// Send an email
-		$prenom = $_POST['prenom'];
-		sendEmail($email,$prenom);
-		
-		// Enter in database
-		$bdd=new PDO($dbname, $user, $pass);
-
-		$req=$bdd->prepare('INSERT INTO registration (nom,prenom,annee,specialite,email,telephone,known,level,coming,participated,interested,usthb) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
-		$arr['nom'] = htmlspecialchars($_POST['nom']);
-		$arr['usthb'] = htmlspecialchars($_POST['usthb']);
-		$arr['prenom'] = htmlspecialchars($_POST['prenom']);
-		$arr['annee'] = htmlspecialchars($_POST['annee']);
-		$arr['specialite'] = htmlspecialchars($_POST['specialite']);
-		$arr['email'] = htmlspecialchars($_POST['email']);
-		$arr['telephone'] = htmlspecialchars($_POST['telephone']);
-		$arr['known'] = htmlspecialchars($_POST['known']);
-		$arr['level'] = htmlspecialchars($_POST['level']);
-		$arr['coming'] = htmlspecialchars($_POST['coming']);
-		$arr['participated'] = htmlspecialchars($_POST['participated']);
-		$arr['interested'] = htmlspecialchars($_POST['interested']);
-		$res = $req->execute(array($arr['nom'], $arr['prenom'], $arr['annee'],$arr['specialite'],$arr['email'],$arr['telephone'],$arr['known'],$arr['level'],$arr['coming'],$arr['participated'],$arr['interested'],$arr['usthb']));
-
-		//Success popup
-		echo
-		'<div id="overlay">
-			<div class="msg success">'.
-				'<div class="msg_inner success_inner">'.
-					'<h2>Votre inscription a été réussie !</h2>'.
-					'<p> Veuillez vérifier votre e-mail pour plus d\'informations.</p>'.
-				'</div>'.
-		'   </div>
-		 </div>';
-	}else{
+if(isset($_POST)){
+	$response = $_POST["g-recaptcha-response"];
+	$url = 'https://www.google.com/recaptcha/api/siteverify';
+	$data = array(
+		'secret' => $api_secret,
+		'response' => $_POST["g-recaptcha-response"]
+	);
+	$options = array(
+		'http' => array (
+			'method' => 'POST',
+			'content' => http_build_query($data)
+		)
+	);
+	$context = stream_context_create($options);
+	$verify = file_get_contents($url, false, $context);
+	$captcha_success=json_decode($verify);
+	if ($captcha_success->success==false) {
+		$_SESSION['error'] = 'Captcha invalide.';
 		header('Location: http://openmindsclub.net/arduino/registration');
+	} else if ($captcha_success->success==true) {
+
+		$email = $_POST['email'];
+		if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+			// Send an email
+			$prenom = $_POST['prenom'];
+			sendEmail($email,$prenom);
+
+			// Enter in database
+			$bdd=new PDO($dbname, $user, $pass);
+
+			$req=$bdd->prepare('INSERT INTO registration (nom,prenom,annee,specialite,email,telephone,known,level,coming,participated,interested,usthb) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)');
+			$arr['nom'] = htmlspecialchars($_POST['nom']);
+			$arr['usthb'] = htmlspecialchars($_POST['usthb']);
+			$arr['prenom'] = htmlspecialchars($_POST['prenom']);
+			$arr['annee'] = htmlspecialchars($_POST['annee']);
+			$arr['specialite'] = htmlspecialchars($_POST['specialite']);
+			$arr['email'] = htmlspecialchars($_POST['email']);
+			$arr['telephone'] = htmlspecialchars($_POST['telephone']);
+			$arr['known'] = htmlspecialchars($_POST['known']);
+			$arr['level'] = htmlspecialchars($_POST['level']);
+			$arr['coming'] = htmlspecialchars($_POST['coming']);
+			$arr['participated'] = htmlspecialchars($_POST['participated']);
+			$arr['interested'] = htmlspecialchars($_POST['interested']);
+			$res = $req->execute(array($arr['nom'], $arr['prenom'], $arr['annee'],$arr['specialite'],$arr['email'],$arr['telephone'],$arr['known'],$arr['level'],$arr['coming'],$arr['participated'],$arr['interested'],$arr['usthb']));
+
+			//Success popup
+			echo
+				'<div id="overlay">
+				<div class="msg success">'.
+				'<div class="msg_inner success_inner">'.
+				'<h2>Votre inscription a été réussie !</h2>'.
+				'<p> Veuillez vérifier votre e-mail pour plus d\'informations.</p>'.
+				'</div>'.
+				'   </div>
+				</div>';
+		}else{
+			$_SESSION['error'] = 'Email invalide.';
+			header('Location: http://openmindsclub.net/arduino/registration');
+		}
 	}
 }
  ?>

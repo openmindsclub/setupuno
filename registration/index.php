@@ -14,11 +14,11 @@
 src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 <link rel="icon"
-     href="../logo.png"/>
+	 href="../logo.png"/>
 
 
 <script>
-	var rb;
+var rb;
 window.onload=function(){
 	rb=document.getElementById("knownyes");
 	rb.addEventListener("change",function(e){
@@ -40,96 +40,102 @@ window.onload=function(){
 <body>
   <h1 class="register-title">ARDUINO Setup</h1>
   <form class="register" method="post" action="../index.php">
-    <input required type="text" class="register-input" placeholder="Nom" name="nom" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
-    <input required type="text" class="register-input" placeholder="Prénom" name="prenom" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
+	<?php
+		if(isset($_SESSION['error'])){
+			echo '<div style="color: #A72020; font-weight: bold; text-align: center; margin-bottom: 10px;">'.$_SESSION['error'].'</div>';
+			unset($_SESSION['error']);
+		}
+	?>
+	<input required type="text" class="register-input" placeholder="Nom" name="nom" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
+	<input required type="text" class="register-input" placeholder="Prénom" name="prenom" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
 <br/>
 
-    <p> Etes vous de l'USTHB ?</p>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<p> Etes vous de l'USTHB ?</p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-    <div class="register-switch">
-      <input type="radio" name="usthb" value="1" id="oui"
+	<div class="register-switch">
+	  <input type="radio" name="usthb" value="1" id="oui"
 class="register-switch-input" checked>
 <label for="oui" class="register-switch-label">Oui</label>
 
-    <input type="radio" name="usthb" value="0" id="non"
+	<input type="radio" name="usthb" value="0" id="non"
 class="register-switch-input">
-        <label for="non" class="register-switch-label">Non</label>
+		<label for="non" class="register-switch-label">Non</label>
 
-      </div>
+	  </div>
 
 
-    <input required type="text" class="register-input"
+	<input required type="text" class="register-input"
 placeholder="Année d'étude" name="annee" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
-    <input required type="text" class="register-input"
+	<input required type="text" class="register-input"
 placeholder="Spécialité" name="specialite" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
-    <input required type="email" class="register-input" placeholder="Email" name="email" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
-    <input required type="text" class="register-input" placeholder="N° de téléphone" name="telephone" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
+	<input required type="email" class="register-input" placeholder="Email" name="email" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
+	<input required type="text" class="register-input" placeholder="N° de téléphone" name="telephone" oninvalid="this.setCustomValidity('Veuillez entrer une saisie valide')">
 
 
-    <br/>
+	<br/>
 
-    <p> Connaissez-vous l'Arduino ? </p>
-    <br/><div class="register-switch">
-    <input type="radio" name="known" value=1 id="knownyes"
+	<p> Connaissez-vous l'Arduino ? </p>
+	<br/><div class="register-switch">
+	<input type="radio" name="known" value=1 id="knownyes"
 class="register-switch-input" >
-        <label for="knownyes" class="register-switch-label">Oui</label>
-    <input type="radio" name="known" value=0 id="knownno"
+		<label for="knownyes" class="register-switch-label">Oui</label>
+	<input type="radio" name="known" value=0 id="knownno"
 class="register-switch-input" checked>
-        <label for="knownno" class="register-switch-label">Non</label></div>
+		<label for="knownno" class="register-switch-label">Non</label></div>
 
 
    <br/>
-    <div id="kakashi">
-    <p> Votre niveau </p><br/>
+	<div id="kakashi">
+	<p> Votre niveau </p><br/>
 
-    <select class="select-style" name="level" id="level">
-      <option value="0">Aucun</option>
-      <option value="1">Débutant</option>
-      <option value="2">intérmediaire</option>
-      <option value="3">Expert</option>
-    </select>
+	<select class="select-style" name="level" id="level">
+	  <option value="0">Aucun</option>
+	  <option value="1">Débutant</option>
+	  <option value="2">intérmediaire</option>
+	  <option value="3">Expert</option>
+	</select>
 
-    </div>
-    <br/><br/>
-
-
-    <p> Je viendrai le..</p>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</div>
+	<br/><br/>
 
 
-    <div class="register-switch">
-      <input type="radio" name="coming" value="2" id="dec2"
+	<p> Je viendrai le..</p>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+	<div class="register-switch">
+	  <input type="radio" name="coming" value="2" id="dec2"
 class="register-switch-input" checked>
 <label for="dec2" class="register-switch-label2">2 Décembre</label>
 
-    <input type="radio" name="coming" value="3" id="dec3"
+	<input type="radio" name="coming" value="3" id="dec3"
 class="register-switch-input">
-        <label for="dec3" class="register-switch-label2">3 Décembre</label>
+		<label for="dec3" class="register-switch-label2">3 Décembre</label>
 
 <input type="radio" name="coming" value="2-3" id="both"
 class="register-switch-input">
-        <label for="both" class="register-switch-label2">Les deux</label>
+		<label for="both" class="register-switch-label2">Les deux</label>
 
-      </div>
-    <br/><br/><br/>
+	  </div>
+	<br/><br/><br/>
 
 
-    <p> Avez-vous déja participer à un événement de ce type ? </p><br/>
-    <div class="register-switch">
-      <input type="radio" name="participated" value=1 id="partyes"
+	<p> Avez-vous déja participer à un événement de ce type ? </p><br/>
+	<div class="register-switch">
+	  <input type="radio" name="participated" value=1 id="partyes"
 class="register-switch-input" checked>
-      <label for="partyes" class="register-switch-label">Oui</label>
-      <input type="radio" name="participated" value=0 id="partno"
+	  <label for="partyes" class="register-switch-label">Oui</label>
+	  <input type="radio" name="participated" value=0 id="partno"
 class="register-switch-input">
-      <label for="partno" class="register-switch-label">Non</label>
+	  <label for="partno" class="register-switch-label">Non</label>
   </div>
   <br/><br/>
-        <input required name="interested" type="text" id="interested" class="register-input" placeholder="Je suis interessé(e) parce que .."><br/><br/>
+		<input required name="interested" type="text" id="interested" class="register-input" placeholder="Je suis interessé(e) parce que .."><br/><br/>
   <br/><br/>
 	<div class="g-recaptcha" data-sitekey="6LcqeToUAAAAAA82Chdbv0rqv51UDyVfVHEf12Q8"></div>
-    <input type="submit" name="submit" value="Inscription" class="register-button" >
+	<input type="submit" name="submit" value="Inscription" class="register-button" >
   </form>
 
 
