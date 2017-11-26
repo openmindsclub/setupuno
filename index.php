@@ -1,6 +1,7 @@
 <?php
 include('config.php'); // Here we got include the config file
 include('mail/mail.php');
+session_start();
  ?>
 <!DOCTYPE html>
 <html >
